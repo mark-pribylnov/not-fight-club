@@ -1,0 +1,55 @@
+@use "sass:math";
+@use "sass:meta";
+@use "sass:string";
+
+@function strip-unit($number) {
+  $pixelsInOneRem: 10;
+  // convert rem into px if root font-size is 62.5% and delete units (5rem = 50, 3.2rem = 32)
+  @if meta.type-of($number) ==
+    "number" and not
+    math.is-unitless($number) and
+    math.unit($number) ==
+    "rem"
+  {
+    @return math.div($number, $number * 0 + 1) * $pixelsInOneRem;
+  }
+  // delete units from px (30px = 30)
+  @if meta.type-of($number) == "number" and not math.is-unitless($number) {
+    @return math.div($number, $number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+// Source: https://css-tricks.com/snippets/sass/strip-unit-function/
+
+//
+//
+//
+//
+//
+//
+//
+// //
+// //
+
+// // Not used, but might come in handy
+// @function calcFSfromVW($vw, $fs) {
+//   /* ONLY "rem" units for $fs*/
+//   /* ONLY "px" units for $vw*/
+
+//   $vwString: #{$vw}; /*interpolation*/
+//   $vwUnits: string.slice($vwString, -2);
+//   $vwValue: stripUnit($vw);
+
+//   $fsString: #{$fs};
+//   $fsUnits: string.slice($fsString, -3);
+//   $fsValue: stripUnit($fs) * 10; /*convert from rem to px if 1 rem is 10px */
+
+//   $newFsInVw: calc($fsValue / $vwValue * 100) + "vw";
+
+//   @if $fsUnits != "rem" or $vwUnits != "px" {
+//     @error "Only 'px' viewport units and 'rem' font-size units are accepted";
+//   }
+//   @return $newFsInVw;
+// }

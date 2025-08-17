@@ -1,0 +1,15 @@
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+  padding: 20px;
+}
+
+.registration-form__title {
+  font-size: 2rem;
+}
+
+.registration-form__button {
+  cursor: pointer;
+}

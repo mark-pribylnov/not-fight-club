@@ -1,0 +1,66 @@
+@use "abstracts" as *;
+
+:root {
+  font-size: 62.5%;
+  /* Default 16px * 62.5% = 10px. Now 1 rem == 10px. */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 1.6rem;
+  background-color: #5d5c5c;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+img,
+svg {
+  max-width: 100%;
+  vertical-align: text-bottom;
+  /* removes the space under the img. It's an inline elements 
+  and has the space for descenders (the bits that hang off the bottom of 'y' and 'p') */
+}
+
+button {
+  border: none;
+}
+
+li {
+  list-style: none;
+  /* reset for nav */
+}
+
+h2 {
+  font-weight: 400;
+  /* for this project */
+}
+
+.overlay {
+  position: fixed;
+  z-index: 2;
+
+  background-color: black;
+  opacity: 0.7;
+  width: 100vw;
+  height: 100vh;
+  transition: 0.5s;
+  z-index: 1;
+}
+
+.overlay--is-hidden {
+  opacity: 0;
+  z-index: -1;
+}

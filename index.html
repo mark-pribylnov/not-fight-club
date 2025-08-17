@@ -3,9 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="main.css" />
-    <script type="module" src="index.js"></script>
-    <link rel="icon" href="assets/icons/favicon.ico" /> -->
+    <link rel="stylesheet" href="dist/css/main.css" />
+    <script type="module" src="src/js/registration-form.js"></script>
+    <script type="module" src="src/js/choose-character.js"></script>
+    <script type="module" src="src/js/modal-show-hide.js"></script>
+    <script type="module" src="src/js/change-character-img.js"></script>
+    <title>Not Fight Club</title>
   </head>
-  <body></body>
+  <body>
+    <div class="overlay overlay--is-hidden"></div>
+    <main>
+      <form class="registration-form">
+        <h2 class="registration-form__title">Create Your Character</h2>
+        <label for="character-name">Current character name - <span class="js-character-name">Warrior</span></label>
+        <input type="text" id="character-name" />
+        <button class="registration-form__button" type="button">Create Character</button>
+      </form>
+      <section class="choosing-character">
+        <div class="characters-modal characters-modal--is-hidden">
+          <img src="assets/img/characters/character1.jpg" alt="character1" />
+          <img src="assets/img/characters/character2.jpg" alt="character2" />
+          <img src="assets/img/characters/character3.jpg" alt="character3" />
+          <img src="assets/img/characters/character4.jpg" alt="character4" />
+        </div>
+        <div class="current-character">
+          <img
+            src="assets/img/characters/character2.jpg"
+            alt="character"
+            class="current-character__img js-current-character-img"
+          />
+          <p class="current-character__name js-character-name">Warrior</p>
+          <div class="current-character__stats">
+            <p class="current-character__wins">Wins: <span class="js-stats-wins">0</span></p>
+            <p class="current-character__loses">Loses: <span class="js-stats-loses">0</span></p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

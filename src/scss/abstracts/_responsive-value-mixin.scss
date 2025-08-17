@@ -1,0 +1,100 @@
+// =============
+// ============== DISABLE PRETTIER BEFORE SAVING for responsiveValue-mixins
+// ===========
+
+// =============
+// ============== DISABLE PRETTIER BEFORE SAVING for responsiveValue-mixins
+// ===========
+
+@use "variables" as *;
+@use "functions" as *;
+@use "sass:string";
+
+@mixin responsiveValue-up(
+  $property,
+  $startingViewport,
+  $targetViewport,
+  $startingValue,
+  $targetValue
+) {
+  // WRITE ABOUT MATH UNIT it's indended for DEBUGGING UNLY but we took a risc here.
+  #{$property}: clamp(
+    $startingValue,
+    string.unquote(
+      "calc(#{$targetValue} - (calc(#{$targetViewport} - 100vw) / ( calc(#{strip-unit($targetViewport)} - #{strip-unit($startingViewport)}) / calc(#{strip-unit($targetValue)} - #{strip-unit($startingValue)}))))"
+    ),
+    $targetValue
+  );
+}
+
+@mixin responsiveValue-down(
+  $property,
+  $startingViewport,
+  $targetViewport,
+  $startingValue,
+  $targetValue
+) {
+  #{$property}: clamp(
+    $targetValue,
+    string.unquote(
+      "calc(#{$startingValue} - (calc(#{$startingViewport} - 100vw) / ( calc(#{strip-unit($startingViewport)} - #{strip-unit($targetViewport)}) / calc(#{strip-unit($startingValue)} - #{strip-unit($targetValue)}))))"
+    ),
+    $startingValue
+  );
+}
+
+// ===================================================================
+// ======== THE BODY OF THE responsiveValue-up MIXIN. PRETTIER doesn't allow to save the way sass works, so DISABLE PRETTIER before saving the file
+// {
+//   #{$property}: clamp(
+//     $startingValue,
+//     string.unquote("calc(#{$targetValue} - (calc(#{$targetViewport} - 100vw) / ( calc(#{strip-unit($targetViewport)} - #{strip-unit($startingViewport)}) / calc(#{strip-unit($targetValue)} - #{strip-unit($startingValue)}))))"),
+//     $targetValue);
+// }
+// =============== DISABLE PRETTIER BEFORE SAVING ======================
+// =====================================================================
+
+// ===================================================================
+// ======== THE BODY OF THE responsiveValue-down MIXIN. PRETTIER doesn't allow to save the way sass works, so DISABLE PRETTIER before saving the file
+// {
+//    #{$property}: clamp(
+//     $targetValue,
+//     string.unquote("calc(#{$startingValue} - (calc(#{$startingViewport} - 100vw) / ( calc(#{strip-unit($startingViewport)} - #{strip-unit($targetViewport)}) / calc(#{strip-unit($startingValue)} - #{strip-unit($targetValue)}))))"),
+//     $startingValue);
+// }
+// =============== DISABLE PRETTIER BEFORE SAVING ======================
+// =====================================================================
+
+// ======== Without calc() and string.unquote() (the're required so the browser doesn't cross the property in the comptuted styles. It works, but it's crossed as overwritten property.
+// @mixin responsiveValue-down(
+//   $property,
+//   $startingViewport,
+//   $targetViewport,
+//   $startingValue,
+//   $targetValue
+// ) {
+//   #{$property}: clamp(
+//     $targetValue,
+//     (
+//       $startingValue -
+//         (
+//           ($startingViewport - 100vw) /
+//             (
+//               (strip-unit($startingViewport) - strip-unit($targetViewport)) /
+//                 (strip-unit($startingValue) - strip-unit($targetValue))
+//             )
+//         )
+//     ),
+//     $startingValue
+//   );
+// }
+
+// // Property value changes gradually.
+// // For instance:
+// // Top border - at 100px padding should be 100px
+// // Bottom border - at 500 px padding should be 50px
+// // Calculated value in the middle of viewport (750px) - 75px
+
+// // Examples:
+// // @include responsiveValue-down(padding-top, $bg-desktop, $bp-tablet,  193px, 0px,);
+// // @include responsiveValue-up(padding-left,  $bg-desktop, $bp-tablet, 0px, 124px);

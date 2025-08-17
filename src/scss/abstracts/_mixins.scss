@@ -1,0 +1,24 @@
+@use "variables" as *;
+@use "functions" as *;
+@use "responsive-value-mixin" as *;
+
+@mixin responsiveFontSize-4-points($fs_desktop, $fs_laptop, $fs_tablet, $fs_mobile) {
+  @media (width <= $bp-desktop) {
+    @include responsiveValue-down(font-size, $bp-desktop, $bp-laptop, $fs_desktop, $fs_laptop);
+  }
+  @media (width <= $bp-laptop) {
+    @include responsiveValue-down(font-size, $bp-laptop, $bp-tablet, $fs_laptop, $fs_tablet);
+  }
+  @media (width <= $bp-tablet) {
+    @include responsiveValue-down(font-size, $bp-tablet, $bp-mobile, $fs_tablet, $fs_mobile);
+  }
+  //We need to include the following media query to ensure the layout aligns with the design file at 420px.
+  // For this reason, it can't be merged with the previous one
+  @media (width <= $bp-mobile) {
+    @include responsiveValue-down(font-size, $bp-tablet, $bp-mobile, $fs_tablet, $fs_mobile);
+  }
+}
+
+// .CTA-btn {
+//   @include responsiveFontSize-4-points();
+// }
