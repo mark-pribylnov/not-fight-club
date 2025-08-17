@@ -1,5 +1,7 @@
 "use strict";
 
+import { hideShowModal } from "./modal-show-hide.js";
+
 const CURRENT_IMG = document.querySelector(".js-current-character-img");
 const ALL_IMAGES = [...document.querySelectorAll(".characters-modal img")];
 
@@ -21,6 +23,7 @@ function changeImg(img) {
 ALL_IMAGES.forEach(img => {
   img.addEventListener("click", () => {
     changeImg(img);
+    hideShowModal();
   });
 });
 
