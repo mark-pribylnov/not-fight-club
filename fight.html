@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css/main.css" />
+    <script type="module" src="src/js/change-character-img.js"></script>
+    <script type="module" src="src/js/registration-form.js"></script>
+    <title>Not Fight Club</title>
+  </head>
+  <body>
+    <div class="overlay overlay--is-hidden"></div>
+    <header>
+      <span class="nav__current-page">Fight</span>
+      <nav>
+        <ul class="nav">
+          <li><a href="registration.html">Registration</a></li>
+          <li><a href="index.html">Main</a></li>
+          <li><a href="character.html">Character</a></li>
+          <li><a href="settings.html">Settings</a></li>
+          <li><a href="fight.html">Fight</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="fight-screen">
+      <section class="fight-heroes-params">
+        <div class="fighter-card">
+          <p class="fighter-card__name js-character-name">Warrior</p>
+          <img src="assets/img/characters/character2.jpg" alt="enemy" class="fighter-card__img js-current-character-img" />
+          <div class="health-bar"></div>
+          <p class="health-points">
+            <span class="health-points__current-health">150</span> / <span class="health-points__max-health">150</span>
+          </p>
+        </div>
+        <div class="fight-settings">
+          <p class="fight-settings__instruction">Pick 1 attack zone and 2 defence zones</p>
+          <div class="fight-settings__zones">
+            <div class="fight-settings__attack-zones">
+              <ul>
+                <li>
+                  <label for="attack-zone">Head</label>
+                  <input type="radio" id="Head-attack-zone" name="attack-zone" value="Head-attack-zone" checked />
+                </li>
+                <li>
+                  <label for="attack-zone">Neck</label
+                  ><input type="radio" id="Neck-attack-zone" name="attack-zone" value="Neck-attack-zone" />
+                </li>
+                <li>
+                  <label for="attack-zone">Body</label
+                  ><input type="radio" id="Body-attack-zone" name="attack-zone" value="Body-attack-zone" />
+                </li>
+                <li>
+                  <label for="attack-zone">Belly</label>
+                  <input type="radio" id="Belly-attack-zone" name="attack-zone" value="Belly-attack-zone" />
+                </li>
+                <li>
+                  <label for="attack-zone">Legs</label
+                  ><input type="radio" id="Legs-attack-zone" name="attack-zone" value="Legs-attack-zone" />
+                </li>
+              </ul>
+            </div>
+            <div class="fight-settings__divider"></div>
+            <div class="fight-settings__defence-zones">
+              <ul>
+                <li>
+                  <input type="checkbox" id="Head-defence-zone" name="defence-zone" />
+                  <label for="Head-defence-zone">Head</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="Neck-defence-zone" name="defence-zone" /> <label for="Neck-defence-zone">Neck</label>
+                </li>
+
+                <li>
+                  <input type="checkbox" id="Body-defence-zone" name="defence-zone" /> <label for="Body-defence-zone">Body</label>
+                </li>
+
+                <li>
+                  <input type="checkbox" id="Belly-defence-zone" name="defence-zone" />
+                  <label for="Belly-defence-zone">Belly</label>
+                </li>
+
+                <li>
+                  <input type="checkbox" id="Legs-defence-zone" name="defence-zone" />
+                  <label for="Legs-defence-zone">Legs</label>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <button class="fight-settings__attack-btn">Attack!</button>
+        </div>
+        <div class="fighter-card">
+          <p class="fighter-card__name">Enemy</p>
+          <img src="assets/img/enemy2.webp" alt="enemy" class="fighter-card__img" />
+          <div class="health-bar"></div>
+          <p class="health-points">
+            <span class="health-points__current-health">150</span> / <span class="health-points__max-health">150</span>
+          </p>
+        </div>
+      </section>
+      <section class="fight-log-screen"></section>
+    </main>
+  </body>
+</html>

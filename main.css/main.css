@@ -472,4 +472,40 @@ header {
   justify-content: space-between;
 }
 
+.fight-heroes-params {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fighter-card__img {
+  max-width: 200px;
+  max-height: 300px;
+}
+
+.fight-log-screen {
+  border: 2px solid;
+  width: 100%;
+  height: 150px;
+  margin-top: 20px;
+}
+
+.fight-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.fight-settings__zones {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.fight-settings__divider {
+  border: 1px solid;
+  height: 100px;
+  width: 1px;
+}
+
 /*# sourceMappingURL=main.css.map */
