@@ -16,4 +16,6 @@ function changeName() {
   });
 }
 
-REGISTER_BUTTON.addEventListener("click", changeName);
+if (REGISTER_BUTTON) {
+  REGISTER_BUTTON.addEventListener("click", changeName);
+}

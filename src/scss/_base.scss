@@ -65,3 +65,26 @@ h2 {
   opacity: 0;
   z-index: -1;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+  &:visited {
+    color: black;
+  }
+}
+
+.fight-btn {
+  padding: 15px;
+  border-radius: 7px;
+  border: 2px solid;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  margin-top: 50px;
+  cursor: pointer;
+  transition: 0.2s;
+  &:hover {
+    transform: scale(1.05) translate(-50%);
+  }
+}

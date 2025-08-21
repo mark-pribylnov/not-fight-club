@@ -376,6 +376,29 @@ h2 {
   z-index: -1;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+a:visited {
+  color: black;
+}
+
+.fight-btn {
+  padding: 15px;
+  border-radius: 7px;
+  border: 2px solid;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  margin-top: 50px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.fight-btn:hover {
+  transform: scale(1.05) translate(-50%);
+}
+
 .registration-form {
   display: flex;
   flex-direction: column;
@@ -433,6 +456,20 @@ h2 {
 }
 .characters-modal img:hover {
   transform: scale(1.02);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.nav {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
 }
 
 /*# sourceMappingURL=main.css.map */

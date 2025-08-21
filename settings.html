@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="main.css/main.css" />
-    <!-- <script type="module" src="src/js/main.js"></script> -->
+    <!-- <script type="module" src="src/js/choose-character.js"></script> -->
+    <!-- <script type="module" src="src/js/change-character-img.js"></script> -->
+    <script type="module" src="src/js/registration-form.js"></script>
     <title>Not Fight Club</title>
   </head>
   <body>
-    <div class="overlay overlay--is-hidden"></div>
     <header>
-      <span class="nav__current-page">Main</span>
+      <span class="nav__current-page">Settings</span>
       <nav>
         <ul class="nav">
           <li><a href="registration.html">Registration</a></li>
@@ -22,7 +23,13 @@
       </nav>
     </header>
     <main>
-      <button class="fight-btn"><a href="fight.html">Fight!</a></button>
+      <section class="name-change-block">
+        <p>Player name: <span class="js-character-name">Warrior</span></p>
+        <form class="registration-form">
+          <input type="text" id="character-name" placeholder="write new name here" />
+          <button class="registration-form__button" type="button">Edit name</button>
+        </form>
+      </section>
     </main>
   </body>
 </html>
