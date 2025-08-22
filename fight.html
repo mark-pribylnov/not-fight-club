@@ -28,11 +28,13 @@
         <div class="fighter-card">
           <p class="fighter-card__name js-character-name">Warrior</p>
           <img src="assets/img/characters/character2.jpg" alt="enemy" class="fighter-card__img js-current-character-img" />
-          <div class="health-bar">
-            <div class="health-bar__current-health"></div>
+          <div class="health-bar js-health-bar">
+            <p class="health-bar__percents-left js-percents-left-player">100 %</p>
+            <div class="health-bar__current-health js-current-health-bar"></div>
           </div>
           <p class="health-points">
-            <span class="health-points__current-health">50</span> / <span class="health-points__max-health">100</span>
+            <span class="health-points__current-health js-player-current-health">100</span> /
+            <span class="health-points__max-health">100</span>
           </p>
         </div>
         <div class="fight-settings">
@@ -98,7 +100,10 @@
         <div class="fighter-card">
           <p class="fighter-card__name js-enemy-name">Enemy</p>
           <img src="assets/img/enemies/enemy2.webp" alt="enemy" class="fighter-card__img js-enemy-img" />
-          <div class="health-bar"><div class="health-bar__current-health"></div></div>
+          <div class="health-bar js-health-bar-enemy">
+            <p class="health-bar__percents-left js-percents-left-enemy">100 %</p>
+            <div class="health-bar__current-health js-current-health-bar-enemy"></div>
+          </div>
           <p class="health-points">
             <span class="health-points__current-health js-enemy-current-health">50</span> /
             <span class="health-points__max-health js-enemy-max-health">100</span>

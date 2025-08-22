@@ -28,7 +28,7 @@ const ATTACK_BTN = document.querySelector(".js-attack-btn");
   enemy_img.setAttribute("src", imgPath);
   enemy_name.innerText = random_name;
   max_health.innerText = health;
-  current_health.innerText = Math.ceil(health / 2);
+  current_health.innerText = health;
 })();
 
 (function prevent_third_defence_zone() {
@@ -69,21 +69,68 @@ check_number_of_defence_zones();
 function attack() {
   const zones = {
     head: {
-      damage: 5,
+      damage: 10,
     },
     neck: {
-      damage: 4,
+      damage: 8,
     },
     body: {
-      damage: 3,
+      damage: 6,
     },
     belly: {
-      damage: 2,
+      damage: 4,
     },
     legs: {
-      damage: 1,
+      damage: 2,
     },
   };
+
+  function get_zones() {
+    const attack_zone = document
+      .querySelector("input[name='attack-zone']:checked")
+      .previousElementSibling.innerText.toLowerCase();
+
+    const defence_zones = [...document.querySelectorAll("input[name='defence-zone']:checked")].map(zone => {
+      return zone.nextElementSibling.innerText.toLowerCase();
+    });
+
+    return [attack_zone, defence_zones];
+  }
+
+  function hit_enemy() {
+    const attack_zone = get_zones()[0];
+    const defence_zones = get_zones()[1];
+
+    const damage = zones[attack_zone].damage;
+
+    (function update_health_points() {
+      const points_enemy = document.querySelector(".js-enemy-current-health");
+      const points_left = (points_enemy.innerText -= damage);
+
+      points_enemy.innerText = points_left < 0 ? 0 : points_left;
+    })();
+
+    (function update_enemy_health_bar() {
+      // const bar_player = document.querySelector(".js-current-health-bar");
+      const bar_enemy = document.querySelector(".js-current-health-bar-enemy");
+
+      // const points_player = document.querySelector(".js-player-current-health");
+      const current_points_enemy = document.querySelector(".js-enemy-current-health").innerText;
+      const max_points_enemy = document.querySelector(".js-enemy-max-health").innerText;
+      const percents_left_enemy = document.querySelector(".js-percents-left-enemy");
+
+      const percents_left = Math.round((current_points_enemy / max_points_enemy) * 100);
+      percents_left_enemy.innerText = percents_left < 0 ? `0 %` : `${percents_left} %`;
+
+      bar_enemy.style.width = percents_left < 0 ? `0` : `${percents_left}%`;
+
+      // console.log(percents_left);
+      // bar_player.style.width = "80%";
+      // points_player.innerText = "30";
+    })();
+  }
+  // console.log(get_zones());
+  hit_enemy();
 }
 
 ATTACK_BTN.addEventListener("click", () => {
