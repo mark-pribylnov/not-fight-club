@@ -1,3 +1,8 @@
+.current-character {
+  display: flex;
+  gap: 15px;
+}
+
 .current-character__wins {
   color: rgb(89, 128, 89);
 }

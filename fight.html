@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="main.css/main.css" />
     <script type="module" src="src/js/change-character-img.js"></script>
     <script type="module" src="src/js/registration-form.js"></script>
+    <script type="module" src="src/js/fight.js"></script>
     <title>Not Fight Club</title>
   </head>
   <body>
@@ -27,7 +28,9 @@
         <div class="fighter-card">
           <p class="fighter-card__name js-character-name">Warrior</p>
           <img src="assets/img/characters/character2.jpg" alt="enemy" class="fighter-card__img js-current-character-img" />
-          <div class="health-bar"></div>
+          <div class="health-bar">
+            <div class="health-bar__current-health"></div>
+          </div>
           <p class="health-points">
             <span class="health-points__current-health">150</span> / <span class="health-points__max-health">150</span>
           </p>
@@ -86,12 +89,12 @@
               </ul>
             </div>
           </div>
-          <button class="fight-settings__attack-btn">Attack!</button>
+          <button class="attack-btn">Attack!</button>
         </div>
         <div class="fighter-card">
           <p class="fighter-card__name">Enemy</p>
           <img src="assets/img/enemy2.webp" alt="enemy" class="fighter-card__img" />
-          <div class="health-bar"></div>
+          <div class="health-bar"><div class="health-bar__current-health"></div></div>
           <p class="health-points">
             <span class="health-points__current-health">150</span> / <span class="health-points__max-health">150</span>
           </p>

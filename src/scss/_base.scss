@@ -88,3 +88,13 @@ a {
     transform: scale(1.05) translate(-50%);
   }
 }
+.attack-btn {
+  padding: 7px;
+  border-radius: 3px;
+  border: 2px solid;
+  cursor: pointer;
+  transition: 0.2s;
+  &:hover {
+    transform: scale(1.05);
+  }
+}

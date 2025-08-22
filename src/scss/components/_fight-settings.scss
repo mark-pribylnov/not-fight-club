@@ -16,3 +16,9 @@
   height: 100px;
   width: 1px;
 }
+
+.fight-settings__attack-zones ul li {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+}
