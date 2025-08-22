@@ -565,4 +565,9 @@ header {
   gap: 6px;
 }
 
+.number-of-defence-zones {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
 /*# sourceMappingURL=main.css.map */

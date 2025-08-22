@@ -36,7 +36,9 @@
           </p>
         </div>
         <div class="fight-settings">
-          <p class="fight-settings__instruction">Pick 1 attack zone and 2 defence zones</p>
+          <p class="fight-settings__instruction">
+            Pick 1 attack zone and <span class="number-of-defence-zones js-number-of-defence-zones">2</span> defence zones
+          </p>
           <div class="fight-settings__zones">
             <div class="fight-settings__attack-zones">
               <p class="zone-heading">Attack zones</p>
@@ -91,14 +93,15 @@
               </ul>
             </div>
           </div>
-          <button class="attack-btn">Attack!</button>
+          <button class="attack-btn js-attack-btn">Attack!</button>
         </div>
         <div class="fighter-card">
           <p class="fighter-card__name js-enemy-name">Enemy</p>
           <img src="assets/img/enemies/enemy2.webp" alt="enemy" class="fighter-card__img js-enemy-img" />
           <div class="health-bar"><div class="health-bar__current-health"></div></div>
           <p class="health-points">
-            <span class="health-points__current-health">50</span> / <span class="health-points__max-health">100</span>
+            <span class="health-points__current-health js-enemy-current-health">50</span> /
+            <span class="health-points__max-health js-enemy-max-health">100</span>
           </p>
         </div>
       </section>
