@@ -1,6 +1,7 @@
 "use strict";
 const DEFENCE_ZONES = [...document.querySelectorAll("input[name='defence-zone']")];
 const ATTACK_BTN = document.querySelector(".js-attack-btn");
+const LOG_SCREEN = document.querySelector(".js-log-screen");
 
 (function pick_enemy_on_load() {
   const enemy_img = document.querySelector(".js-enemy-img");
@@ -103,7 +104,15 @@ function attack() {
 
     const damage = zones[attack_zone].damage;
 
-    (function update_health_points() {
+    (function log_attack() {
+      const attacker = localStorage.getItem("characterName");
+      const defender = document.querySelector(".js-enemy-name").innerText;
+
+      const sentence = `<p><span class="log-key-words">${attacker}</span> attacked <span class="log-key-words">${defender}</span> to <span class="log-key-words">${attack_zone}</span> and deal <span class="log-damage">${damage} damage</span></p>`;
+      LOG_SCREEN.appendChild(elementFromHtml(sentence));
+    })();
+
+    (function update_enemy_health_points() {
       const points_enemy = document.querySelector(".js-enemy-current-health");
       const points_left = (points_enemy.innerText -= damage);
 
@@ -123,13 +132,9 @@ function attack() {
       percents_left_enemy.innerText = percents_left < 0 ? `0 %` : `${percents_left} %`;
 
       bar_enemy.style.width = percents_left < 0 ? `0` : `${percents_left}%`;
-
-      // console.log(percents_left);
-      // bar_player.style.width = "80%";
-      // points_player.innerText = "30";
     })();
   }
-  // console.log(get_zones());
+
   hit_enemy();
 }
 
@@ -160,4 +165,10 @@ DEFENCE_ZONES.forEach(input => {
 
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function elementFromHtml(html) {
+  const template = document.createElement("template");
+  template.innerHTML = html.trim();
+  return template.content.firstElementChild;
 }
