@@ -7,9 +7,18 @@
   padding: 5px 5px;
 }
 
-.log-key-words {
+// .log-paragraph {
+//   // margin-bottom: 10px;
+// }
+
+.log-key-words--player {
   font-weight: bold;
   color: #08039c;
+}
+
+.log-key-words--enemy {
+  font-weight: bold;
+  color: rgb(3, 125, 182);
 }
 
 .log-damage {

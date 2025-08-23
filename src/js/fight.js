@@ -2,6 +2,33 @@
 const DEFENCE_ZONES = [...document.querySelectorAll("input[name='defence-zone']")];
 const ATTACK_BTN = document.querySelector(".js-attack-btn");
 const LOG_SCREEN = document.querySelector(".js-log-screen");
+const zones = {
+  head: {
+    damage: 10,
+  },
+  neck: {
+    damage: 8,
+  },
+  body: {
+    damage: 6,
+  },
+  belly: {
+    damage: 4,
+  },
+  legs: {
+    damage: 2,
+  },
+};
+
+function get_selected_zones() {
+  const attack_zone = document.querySelector("input[name='attack-zone']:checked").previousElementSibling.innerText.toLowerCase();
+
+  const defence_zones = [...document.querySelectorAll("input[name='defence-zone']:checked")].map(zone => {
+    return zone.nextElementSibling.innerText.toLowerCase();
+  });
+
+  return [attack_zone, defence_zones];
+}
 
 (function pick_enemy_on_load() {
   const enemy_img = document.querySelector(".js-enemy-img");
@@ -68,47 +95,17 @@ function check_number_of_defence_zones() {
 check_number_of_defence_zones();
 
 function attack() {
-  const zones = {
-    head: {
-      damage: 10,
-    },
-    neck: {
-      damage: 8,
-    },
-    body: {
-      damage: 6,
-    },
-    belly: {
-      damage: 4,
-    },
-    legs: {
-      damage: 2,
-    },
-  };
-
-  function get_zones() {
-    const attack_zone = document
-      .querySelector("input[name='attack-zone']:checked")
-      .previousElementSibling.innerText.toLowerCase();
-
-    const defence_zones = [...document.querySelectorAll("input[name='defence-zone']:checked")].map(zone => {
-      return zone.nextElementSibling.innerText.toLowerCase();
-    });
-
-    return [attack_zone, defence_zones];
-  }
-
-  function hit_enemy() {
-    const attack_zone = get_zones()[0];
-    const defence_zones = get_zones()[1];
+  (function hit_enemy() {
+    const attack_zone = get_selected_zones()[0];
+    const defence_zones = get_selected_zones()[1];
 
     const damage = zones[attack_zone].damage;
 
-    (function log_attack() {
+    (function log_player_attack() {
       const attacker = localStorage.getItem("characterName");
       const defender = document.querySelector(".js-enemy-name").innerText;
 
-      const sentence = `<p><span class="log-key-words">${attacker}</span> attacked <span class="log-key-words">${defender}</span> to <span class="log-key-words">${attack_zone}</span> and deal <span class="log-damage">${damage} damage</span></p>`;
+      const sentence = `<p class="log-paragraph"><span class="log-key-words--player">${attacker}</span> attacked <span class="log-key-words--player">${defender}</span> to <span class="log-key-words--player">${attack_zone}</span> and deal <span class="log-damage">${damage} damage</span></p>`;
       LOG_SCREEN.appendChild(elementFromHtml(sentence));
     })();
 
@@ -133,9 +130,55 @@ function attack() {
 
       bar_enemy.style.width = percents_left < 0 ? `0` : `${percents_left}%`;
     })();
-  }
+  })();
+  (function hit_player() {
+    const attack_zone = Object.keys(zones)[getRandomNumber(0, Object.keys(zones).length - 1)];
+    const defence_zones = [
+      Object.keys(zones)[getRandomNumber(0, Object.keys(zones).length - 1)],
+      Object.keys(zones)[getRandomNumber(0, Object.keys(zones).length - 1)],
+    ];
 
-  hit_enemy();
+    const damage = zones[attack_zone].damage;
+
+    const player_defence_zones = get_selected_zones()[1];
+    // console.log(player_defence_zones);
+    // const defence_zones = get_selected_zones()[1];
+
+    (function log_enemy_attack() {
+      const attacker = document.querySelector(".js-enemy-name").innerText;
+      const defender = localStorage.getItem("characterName");
+
+      const sentence = `<p class="log-paragraph"><span class="log-key-words--enemy">${attacker}</span> attacked <span class="log-key-words--enemy">${defender}</span> to <span class="log-key-words--enemy">${attack_zone}</span> and deal <span class="log-damage">${damage} damage</span></p>`;
+      LOG_SCREEN.appendChild(elementFromHtml(sentence));
+      LOG_SCREEN.appendChild(elementFromHtml("<p>---</p>"));
+
+      scroll_down();
+    })();
+
+    (function log_player_defence() {})();
+
+    (function update_player_health_points() {
+      const points_player = document.querySelector(".js-player-current-health");
+      const points_left = (points_player.innerText -= damage);
+
+      points_player.innerText = points_left < 0 ? 0 : points_left;
+    })();
+
+    (function update_player_health_bar() {
+      // const bar_player = document.querySelector(".js-current-health-bar");
+      const bar_player = document.querySelector(".js-current-health-bar-player");
+
+      // const points_player = document.querySelector(".js-player-current-health");
+      const current_points_player = document.querySelector(".js-player-current-health").innerText;
+      const max_points_player = document.querySelector(".js-player-max-health").innerText;
+      const percents_left_player = document.querySelector(".js-percents-left-player");
+
+      const percents_left = Math.round((current_points_player / max_points_player) * 100);
+      percents_left_player.innerText = percents_left < 0 ? `0 %` : `${percents_left} %`;
+
+      bar_player.style.width = percents_left < 0 ? `0` : `${percents_left}%`;
+    })();
+  })();
 }
 
 ATTACK_BTN.addEventListener("click", () => {
@@ -171,4 +214,8 @@ function elementFromHtml(html) {
   const template = document.createElement("template");
   template.innerHTML = html.trim();
   return template.content.firstElementChild;
+}
+
+function scroll_down() {
+  LOG_SCREEN.scrollTop = LOG_SCREEN.scrollHeight;
 }
