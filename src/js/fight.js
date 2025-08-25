@@ -37,15 +37,15 @@ function get_selected_zones() {
   const current_health = document.querySelector(".js-enemy-current-health");
 
   const enemies = {
-    Galactus: { imgPath: "../../assets/img/enemies/enemy1.webp", health: 100 },
-    Thanos: { imgPath: "../../assets/img/enemies/enemy2.webp", health: 111 },
-    "Snow Troll": { imgPath: "../../assets/img/enemies/enemy3.jpg", health: 102 },
-    Saruman: { imgPath: "../../assets/img/enemies/enemy4.jpg", health: 113 },
-    Joker: { imgPath: "../../assets/img/enemies/enemy5.jpg", health: 104 },
-    Octopus: { imgPath: "../../assets/img/enemies/enemy6.jpg", health: 115 },
-    Goblin: { imgPath: "../../assets/img/enemies/enemy7.webp", health: 106 },
-    Lizard: { imgPath: "../../assets/img/enemies/enemy8.jpg", health: 117 },
-    Sandman: { imgPath: "../../assets/img/enemies/enemy9.jpg", health: 108 },
+    Galactus: { imgPath: "../../not-fight-club/assets/img/enemies/enemy1.webp", health: 100 },
+    Thanos: { imgPath: "../../not-fight-club/assets/img/enemies/enemy2.webp", health: 111 },
+    "Snow Troll": { imgPath: "../../not-fight-club/assets/img/enemies/enemy3.jpg", health: 102 },
+    Saruman: { imgPath: "../../not-fight-club/assets/img/enemies/enemy4.jpg", health: 113 },
+    Joker: { imgPath: "../..not-fight-club//assets/img/enemies/enemy5.jpg", health: 104 },
+    Octopus: { imgPath: "../../not-fight-club/assets/img/enemies/enemy6.jpg", health: 115 },
+    Goblin: { imgPath: "../../not-fight-club/assets/img/enemies/enemy7.webp", health: 106 },
+    Lizard: { imgPath: "../../not-fight-club/assets/img/enemies/enemy8.jpg", health: 117 },
+    Sandman: { imgPath: "../../not-fight-club/assets/img/enemies/enemy9.jpg", health: 108 },
   };
 
   const enemies_keys = Object.keys(enemies);
